@@ -37,7 +37,7 @@
 <br>
 
 <div align="center">
-   &nbsp; &nbsp; &nbsp;<a target="_blank" href="#"><img src="https://i.imgur.com/gNdakfw.png" height="60" /></a> &nbsp; &nbsp; &nbsp;
+&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; <a href="#"><img src="https://i.imgur.com/gNdakfw.png" height="60" /></a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
 </div>
 
 <br>
