@@ -41,19 +41,13 @@
   
 <br>
 
-<span style="float:left;" align="left" height="150" width="14">
-<a style="float:left;" align="left" height="150"  width="14" href="#"><img height="150" src="https://i.imgur.com/zBzBb29.png" /></a>
-</span>
 
-<span style="float:right;" align="right" height="150" width="14">
-<p>
-<a href="https://raya.io" target="_blank"><img src="https://i.imgur.com/hfy6XCj.png" height="100" /></a>
-</p>
+<a style="float:left;" align="left" href="https://github.com/hamedbaatour"><img height="150" src="https://i.imgur.com/zBzBb29.png" /></a>
+<a style="float:right;" align="right" href="https://raya.io"><img height="150" src="https://i.imgur.com/LOgawmF.png" /></a>
+
 <br>
-  <p>
-<a href="mailto:hamedbaatour@gmail.com" target="_blank"><img src="https://i.imgur.com/VKbn5Qz.png" height="100" /></a>
-    </p>
-</span>
+
+<a target="_blank" href="#"><img src="https://i.imgur.com/cYCxvZn.png" height="40" /></a>
 
 </div>
 
