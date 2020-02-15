@@ -1,6 +1,6 @@
 <div align="center">
   
-<a href="#"><img src="https://i.imgur.com/rRyZa1d.png" height="160" /></a>
+<img src="https://i.imgur.com/rRyZa1d.png" height="160" />
 
 <br>
 
@@ -10,9 +10,9 @@
 
 <div align="center">
  
-  <a href="https://www.npmjs.com/package/receptionist"><img src="https://i.imgur.com/qlk2CTZ.png" height="22" /></a> &nbsp;
-  <a href="#"><img src="https://i.imgur.com/Ry71X0o.png" height="22" /></a> &nbsp;
-  <a href="#"><img src="https://i.imgur.com/PMDYFz6.png" height="22" /></a>
+  <a target="_blank" href="https://www.npmjs.com/package/receptionist"><img src="https://i.imgur.com/qlk2CTZ.png" height="22" /></a> &nbsp;
+  <a target="_blank" href="#"><img src="https://i.imgur.com/Ry71X0o.png" height="22" /></a> &nbsp;
+  <a target="_blank" href="#"><img src="https://i.imgur.com/PMDYFz6.png" height="22" /></a>
 
 </div>
 
