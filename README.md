@@ -33,5 +33,30 @@
 
   <a target="_blank" href="#"><img src="https://i.imgur.com/nUBQEie.png" height="50" /></a>
 
+<br>
+<br>
 
+<div align="center">
+   &nbsp; &nbsp; &nbsp;<a target="_blank" href="#"><img src="https://i.imgur.com/2q46BsJ.png" height="18" /></a> &nbsp; &nbsp; &nbsp;
+</div>
 
+<br>
+<br>
+<br>
+
+<a target="_blank" href="#"><img src="https://i.imgur.com/szMg9rC.png" height="50" /></a>
+  
+<br>
+<br>
+
+  <a target="_blank" href="#"><img src="https://i.imgur.com/vLShuWN.png" height="170" /></a>
+
+<br>
+
+<div align="center">
+  
+```
+   npm install receptionist
+```
+
+</div>
