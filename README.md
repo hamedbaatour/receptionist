@@ -42,8 +42,11 @@
 <br>
 
 
-<a style="float:left;" align="left" href="https://github.com/hamedbaatour"><img height="150" src="https://i.imgur.com/zBzBb29.png" /></a>
-<a style="float:right;" align="right" href="https://raya.io"><img height="150" src="https://i.imgur.com/LOgawmF.png" /></a>
+<div align="center">
+<a style="float:left;" align="left" href="https://github.com/hamedbaatour"><img height="250" src="https://i.imgur.com/zBzBb29.png" /></a>
+&nbsp; &nbsp;  &nbsp; &nbsp; &nbsp;
+<a style="float:right;" align="right" href="https://raya.io"><img height="250" src="https://i.imgur.com/LOgawmF.png" /></a>
+</div>
 
 <br>
 
