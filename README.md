@@ -31,16 +31,18 @@
 <br>   
 <br>
 
-  <a target="_blank" href="#"><img src="https://i.imgur.com/nUBQEie.png" height="50" /></a>
+  <a target="_blank" href="#"><img src="https://i.imgur.com/nUBQEie.png" height="47" /></a>
 
 <br>
 <br>
 
 <div align="center">
-<a href="#"><img src="https://i.imgur.com/gNdakfw.png" width="600"/></a>
+<a href="#"><img src="https://i.imgur.com/UNbxU5v.png" height="60"/></a>
+  
+  
   
 <br>
-
+<br>
 
 <div align="center">
 <a style="float:left;" align="left" href="https://github.com/hamedbaatour"><img height="250" src="https://i.imgur.com/zBzBb29.png" /></a>
@@ -51,7 +53,7 @@
 <br>
 <br>
 
-<a target="_blank" href="#"><img src="https://i.imgur.com/cYCxvZn.png" height="40" /></a>
+<a target="_blank" href="#"><img src="https://i.imgur.com/cYCxvZn.png" height="38" /></a>
 
 </div>
 
