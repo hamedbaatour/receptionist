@@ -15,6 +15,68 @@ export class Receptionist extends HTMLElement {
     // Getting ShadowDOM elements
     const fab = this.shadowRoot.querySelector(".fab");
     const card = this.shadowRoot.querySelector(".card");
+    const noDataNotice = this.shadowRoot.querySelector(".empty-list-notice");
+
+    // Receptionist settings passed in (props)
+    let error = false;
+    let dataArray = this.getAttribute("data");
+    if (typeof dataArray === "string") {
+      try {
+        dataArray = eval(dataArray);
+      } catch (e) {
+        error = true;
+        window.console.error(
+          "Receptionist 'data' attribute is invalid. please provide a valid array."
+        );
+      }
+    }
+    if (!error) {
+      if (window.Array.isArray(dataArray)) {
+        if (dataArray.length === 0) {
+          noDataNotice.classList.add("show");
+        } else {
+          // check if all 'data' array objects have a valid name && description properties
+          dataArray.forEach(listItem => {
+            if (!error) {
+              if (typeof listItem === "object" && listItem !== null) {
+                if (
+                  !listItem.name ||
+                  typeof listItem.name !== "string" ||
+                  (listItem.name && listItem.name.length === 0)
+                ) {
+                  error = true;
+                  window.console.error(
+                    "all Receptionist 'data' array objects should have a valid 'name' property"
+                  );
+                } else if (
+                  !listItem.description ||
+                  typeof listItem.description !== "string" ||
+                  (listItem.description && listItem.description.length === 0)
+                ) {
+                  error = true;
+                  window.console.error(
+                    "all Receptionist 'data' array objects should have a valid 'description' property"
+                  );
+                }
+              } else {
+                error = true;
+                window.console.error(
+                  "Receptionist 'data' array should contain objects with a valid 'name' & 'description' property"
+                );
+              }
+            }
+          });
+
+          console.log(dataArray);
+        }
+      } else if (dataArray !== null) {
+        window.console.error(
+          "Receptionist 'data' attribute should be an array"
+        );
+      } else {
+        noDataNotice.classList.add("show");
+      }
+    }
 
     // FAB button click event handler
     fab.addEventListener("click", () => {
