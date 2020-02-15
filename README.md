@@ -23,18 +23,15 @@
 <br>
 
   <a href="#"><img src="https://i.imgur.com/CCcLC7I.png" height="700" /></a>
-    
-<br> 
-  
-  <a target="_blank" href="#"><img src="https://i.imgur.com/nUBQEie.png" height="50" /></a>
-  
-  
-  
+     
   
 </div>
 
+<br>   
+<br>   
+<br>
 
-
+  <a target="_blank" href="#"><img src="https://i.imgur.com/nUBQEie.png" height="50" /></a>
 
 
 
