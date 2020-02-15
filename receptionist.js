@@ -15,9 +15,10 @@ export class Receptionist extends HTMLElement {
     // Getting ShadowDOM elements
     const fab = this.shadowRoot.querySelector(".fab");
     const card = this.shadowRoot.querySelector(".card");
+    const list = this.shadowRoot.querySelector(".list");
     const noDataNotice = this.shadowRoot.querySelector(".empty-list-notice");
 
-    // Receptionist settings passed in (props)
+    // Receptionist settings+data props passed in (html attributes)
     let error = false;
     let dataArray = this.getAttribute("data");
     if (typeof dataArray === "string") {
@@ -57,6 +58,14 @@ export class Receptionist extends HTMLElement {
                   window.console.error(
                     "all Receptionist 'data' array objects should have a valid 'description' property"
                   );
+                } else if (
+                  listItem.checked !== undefined &&
+                  typeof listItem.checked !== "boolean"
+                ) {
+                  error = true;
+                  window.console.error(
+                    "all Receptionist 'data' array objects should have a 'checked' property of type boolean"
+                  );
                 }
               } else {
                 error = true;
@@ -66,8 +75,24 @@ export class Receptionist extends HTMLElement {
               }
             }
           });
-
-          console.log(dataArray);
+          if (!error) {
+            // data prop is valid so loop through the array and add all list items to the list
+            dataArray.forEach(listItem => {
+              const li = document.createElement("li");
+              li.className = "list-item";
+              li.innerHTML = `
+                ${
+                  listItem.checked
+                    ? '<i class="list-item-mark">✔️</i>'
+                    : '<i class="list-item-mark">❌</i>'
+                }
+                <span class="list-item-title">${listItem.name}</span>
+                <span class="list-item-description">${
+                  listItem.description
+                }</span>`;
+              list.appendChild(li);
+            });
+          }
         }
       } else if (dataArray !== null) {
         window.console.error(
