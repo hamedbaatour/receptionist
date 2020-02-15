@@ -41,13 +41,13 @@
   
 <br>
 
-<span align="left">
-<a href="#"><img src="https://i.imgur.com/zBzBb29.png" height="250" /></a>
-</span>
-<span align="right">
-<a href="https://raya.io" target="_blank"><img src="https://i.imgur.com/hfy6XCj.png" height="100" /></a>
-<a href="mailto:hamedbaatour@gmail.com" target="_blank"><img src="https://i.imgur.com/VKbn5Qz.png" height="100" /></a>
-</span>
+<div align="left">
+<img src="https://i.imgur.com/zBzBb29.png" height="250" />
+</div>
+<div align="right">
+<img src="https://i.imgur.com/hfy6XCj.png" height="100" />
+<img src="https://i.imgur.com/VKbn5Qz.png" height="100" />
+</div>
 
 
 </div>
