@@ -39,8 +39,6 @@
 <div align="center">
 <a href="#"><img src="https://i.imgur.com/YIPjb36.png" height="60"/></a>
   
-  
-<br>
 <br>
 <br>
 
