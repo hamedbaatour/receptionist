@@ -11,8 +11,8 @@
 <div align="center">
  
   <a target="_blank" href="https://www.npmjs.com/package/receptionist"><img src="https://i.imgur.com/qlk2CTZ.png" height="22" /></a> &nbsp;
-  <a target="_blank" href="#"><img src="https://i.imgur.com/Ry71X0o.png" height="22" /></a> &nbsp;
-  <a target="_blank" href="#"><img src="https://i.imgur.com/PMDYFz6.png" height="22" /></a>
+  <a target="_blank" href="https://prettier.io/"><img src="https://i.imgur.com/Ry71X0o.png" height="22" /></a> &nbsp;
+  <a target="_blank" href="https://bundlephobia.com/result?p=receptionist@1.0.0"><img src="https://i.imgur.com/PMDYFz6.png" height="22" /></a>
 
 </div>
 
