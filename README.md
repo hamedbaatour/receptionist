@@ -56,7 +56,7 @@
 <div align="center">
   
 ```
-   npm install receptionist
+npm install receptionist
 ```
 
 </div>
