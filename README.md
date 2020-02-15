@@ -41,7 +41,7 @@
   
 <br>
 
-<div align="center">
+<div align="center" style="display:flex">
 <span>
 <a href="#"><img src="https://i.imgur.com/zBzBb29.png" height="250" /></a>
 </span>
