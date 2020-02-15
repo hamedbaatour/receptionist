@@ -1,0 +1,293 @@
+<style>
+  /*====================
+         Shared CSS
+    ====================*/
+  :host {
+    /*=== Font ===*/
+    font-family: sans-serif;
+    /*=== Primary ===*/
+    --bg: #00b9ff;
+    --txt: #ffffff;
+    /*=== Secondary ===*/
+    --bg2: #ffffff;
+    --text2: #000000;
+  }
+
+  ::-webkit-scrollbar {
+    width: 8px; /* for vertical scrollbars */
+    height: 8px; /* for horizontal scrollbars */
+    border-radius: 2rem;
+  }
+
+  ::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 2rem;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.2);
+    border-radius: 2rem;
+  }
+
+  /*====================
+        Trigger (FAB)
+    ====================*/
+  .fab {
+    width: 193px;
+    height: 57px;
+    bottom: 2rem;
+    right: 5.5rem;
+    position: fixed;
+    overflow: hidden;
+    border: none;
+    outline: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: bold;
+    font-size: 1.15rem;
+    background: var(--bg);
+    color: var(--txt);
+    border-radius: 2rem;
+    padding: 1rem 2rem;
+    cursor: pointer;
+    transition: transform 0.25s ease-in-out;
+    box-shadow: 0 0 1rem rgba(0, 0, 0, 0.2);
+  }
+
+  .fab > span {
+    position: absolute;
+    transition: opacity 0.25s ease-in-out;
+  }
+
+  .fab:hover {
+    transform: scale(1.05);
+  }
+
+  .fab-opened-text {
+    opacity: 0;
+  }
+
+  .fab-closed-text {
+    opacity: 0;
+  }
+
+  /*====================
+            Card
+    ====================*/
+  .card-wrapper {
+    filter: drop-shadow(0 0 0.5rem rgba(0, 0, 0, 0.3));
+    bottom: 6rem;
+    right: 1rem;
+    position: fixed;
+    border-radius: 2rem;
+    overflow: hidden;
+  }
+
+  .card {
+    width: 350px;
+    height: 600px;
+    display: flex;
+    flex-flow: column;
+    clip-path: polygon(
+      0% 0%,
+      100% 0%,
+      100% 97%,
+      53% 97%,
+      50% 100%,
+      47% 97%,
+      0 97%
+    );
+    position: relative;
+    transform: scale(0);
+    transition: transform 0.25s ease-in-out;
+    transform-origin: bottom center;
+  }
+
+  .card-active {
+    display: flex;
+    transform: scale(1);
+  }
+
+  .card-tip {
+    background: white;
+    height: 100%;
+    width: 1.5rem;
+    justify-self: center;
+    align-self: center;
+    position: absolute;
+  }
+
+  /*=== Card Header ===*/
+  .card-header {
+    background: var(--bg);
+    color: var(--txt);
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+    padding: 2rem 0 4.5rem 0;
+    z-index: 1;
+  }
+
+  .header-title {
+    margin: 0;
+  }
+
+  .header-percentage {
+    margin: 1rem 0;
+    font-size: 1rem;
+    font-weight: bold;
+    opacity: 0.5;
+  }
+
+  .header-progress {
+    max-height: 0.5rem;
+    width: 70%;
+    -webkit-appearance: none;
+    appearance: none;
+  }
+
+  .header-progress::-webkit-progress-bar {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 1rem;
+  }
+
+  .header-progress::-webkit-progress-value {
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 1rem;
+  }
+
+  .header-progress::-moz-progress-bar {
+    background-color: rgba(255, 255, 255, 0.5);
+    border-radius: 1rem;
+  }
+
+  /*=== Card Body ===*/
+  .card-body {
+    height: 425px;
+    margin-top: -40px;
+    border-radius: 2rem;
+    background: white;
+    z-index: 2;
+    box-shadow: 0 -1rem 0.9rem rgba(0, 0, 0, 0.1);
+  }
+
+  .list {
+    margin: 0 0 1.25rem 0.75rem;
+    padding: 0;
+    list-style: none;
+    overflow-x: hidden;
+    overflow-y: auto;
+    height: 90%;
+  }
+
+  .list-item {
+    font-size: 1rem;
+    margin: 2rem 0;
+  }
+
+  .list-item:last-child {
+    margin: 2rem 0 0.5rem 0;
+  }
+
+  .list-item-mark {
+      margin-right: 0.25rem;
+  }
+
+  .list-item-title {
+    font-size: 1.25rem;
+  }
+
+  .list-item-description {
+    display: block;
+    font-size: 0.85rem;
+    opacity: 0.7;
+    margin-top: 0.6rem;
+    margin-left: 2rem;
+  }
+
+  /*====================
+         Shared CSS
+    ====================*/
+  .show {
+    opacity: 1;
+  }
+</style>
+
+<!-- Card -->
+<div class="card-wrapper">
+  <section class="card card-active">
+    <div class="card-header">
+      <h1 class="header-title">🤵 Finish Account Setup</h1>
+      <p class="header-percentage">60% Done</p>
+
+      <progress class="header-progress" max="100" value="70"> 70%</progress>
+    </div>
+
+    <div class="card-body">
+      <ul class="list">
+        <li class="list-item">
+          <i class="list-item-mark">✔️</i>
+          <i class="list-item-mark">❌</i>
+          <span class="list-item-title">Add profile image</span>
+          <span class="list-item-description"
+            >You can change your account avatar in settings page</span
+          >
+        </li>
+
+        <li class="list-item">
+          <i class="list-item-mark">✔️</i>
+          <span class="list-item-title">Add profile image</span>
+          <span class="list-item-description"
+            >You can change your account avatar in settings page</span
+          >
+        </li>
+
+        <li class="list-item">
+          <i class="list-item-mark">✔️</i>
+          <span class="list-item-title">Add profile image</span>
+          <span class="list-item-description"
+            >You can change your account avatar in settings page</span
+          >
+        </li>
+
+        <li class="list-item">
+          <i class="list-item-mark">✔️</i>
+          <span class="list-item-title">Add profile image</span>
+          <span class="list-item-description"
+            >You can change your account avatar in settings page</span
+          >
+        </li>
+        <li class="list-item">
+          <i class="list-item-mark">✔️</i>
+          <span class="list-item-title">Add profile image</span>
+          <span class="list-item-description"
+            >You can change your account avatar in settings page</span
+          >
+        </li>
+        <li class="list-item">
+          <i class="list-item-mark">✔️</i>
+          <span class="list-item-title">Add profile image</span>
+          <span class="list-item-description"
+            >You can change your account avatar in settings page</span
+          >
+        </li>
+        <li class="list-item">
+          <i class="list-item-mark">✔️</i>
+          <span class="list-item-title">Add profile image</span>
+          <span class="list-item-description"
+            >You can change your account avatar in settings page</span
+          >
+        </li>
+      </ul>
+    </div>
+    <div class="card-tip"></div>
+  </section>
+</div>
+
+<!-- Trigger -->
+<button class="fab">
+  <span class="fab-closed-text show">🏁 Start Here !</span>
+  <span class="fab-opened-text">✖️ Close</span>
+</button>

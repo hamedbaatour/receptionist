@@ -1,0 +1,28 @@
+{
+  "name": "receptionist",
+  "version": "1.0.0",
+  "type": "module",
+  "license": "MIT",
+  "files": [
+    "receptionist.js",
+    "receptionist.html"
+  ],
+  "description": "Onboarding widget to reduce churn on your SaaS app",
+  "main": "receptionist.js",
+  "scripts": {
+    "start": "npx live-server --port=5500 --open=demo",
+    "lint": "npx prettier --write \"**/*.js\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hamedbaatour/receptionist"
+  },
+  "keywords": [
+    "onboarding, chrun, widget, saas, checklist, onbaording chrun, onboarding javascript library"
+  ],
+  "author": "Hamed Baatour <hamedbaatour@gmail.com> (https://dorvik.com/)",
+  "bugs": {
+    "url": "https://github.com/hamedbaatour/receptionist/issues"
+  },
+  "homepage": "https://github.com/hamedbaatour/receptionist"
+}
