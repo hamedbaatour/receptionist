@@ -41,11 +41,11 @@
   
 <br>
 
-<div align="center" style="display:flex">
-<span>
+<div align="center">
+<span align="left">
 <a href="#"><img src="https://i.imgur.com/zBzBb29.png" height="250" /></a>
 </span>
-<span>
+<span align="right">
 <a href="https://raya.io" target="_blank"><img src="https://i.imgur.com/hfy6XCj.png" height="100" /></a>
 <a href="mailto:hamedbaatour@gmail.com" target="_blank"><img src="https://i.imgur.com/VKbn5Qz.png" height="100" /></a>
 </span>
