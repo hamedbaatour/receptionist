@@ -38,6 +38,19 @@
 
 <div align="center">
 &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; <a href="#"><img src="https://i.imgur.com/gNdakfw.png" height="60" /></a> &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;
+  
+<br>
+
+<div>
+<a href="#"><img src="https://i.imgur.com/zBzBb29.png" height="300" /></a>
+</div>
+<div>
+<a href="https://raya.io" target="_blank"><img src="https://i.imgur.com/hfy6XCj.png" height="100" /></a>
+<br>
+<a href="mailto:hamedbaatour@gmail.com" target="_blank"><img src="https://i.imgur.com/VKbn5Qz.png" height="100" /></a>
+</div>
+
+
 </div>
 
 <br>
