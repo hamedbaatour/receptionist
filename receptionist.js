@@ -20,7 +20,7 @@ export class Receptionist extends HTMLElement {
     fab.addEventListener("click", () => {
       card.classList.toggle("card-active");
       // Switch animation between FAB closed text (Start Here !) and opened text ( X close )
-      [...fab.children].forEach(span => span.classList.toggle("show"));
+      [...fab.children].forEach(span => span.classList.toggle("fade"));
     });
   }
 
