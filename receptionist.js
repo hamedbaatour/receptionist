@@ -9,7 +9,7 @@ export class Receptionist extends HTMLElement {
   async connectedCallback() {
     // Import component template (HTML)
     this.attachShadow({ mode: "open" }).innerHTML = await (
-      await fetch("../receptionist.html")
+      await fetch("/receptionist.html")
     ).text();
 
     // Getting ShadowDOM elements
@@ -18,12 +18,88 @@ export class Receptionist extends HTMLElement {
     const list = this.shadowRoot.querySelector(".list");
     const noDataNotice = this.shadowRoot.querySelector(".empty-list-notice");
 
-    // Receptionist settings+data props passed in (html attributes)
+    //  === Receptionist settings+data props passed in (html attributes) ===
     let error = false;
+
+    // --- settings prop ---
+    let settings = this.getAttribute("settings");
+
+    // if settings prop is string convert it to a js object
+    if (typeof settings === "string") {
+      try {
+        settings = settings
+          .replace(/\s+/g, "")
+          .replace(/'/g, '"')
+          .replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:([^\/])/g, '"$2":$4');
+        settings = JSON.parse(settings);
+      } catch (e) {
+        error = true;
+        window.console.error(
+          "Receptionist 'settings' attribute is invalid. please provide a valid object."
+        );
+      }
+    }
+    if (!error) {
+      // settings object validation
+      if (typeof settings === "object" && settings !== null) {
+        const style = this.shadowRoot.querySelector("style");
+        console.log(settings.backgroundColor);
+        // settings backgruondColor validation
+        if (
+          settings.backgroundColor &&
+          typeof settings.backgroundColor === "string" &&
+          settings.backgroundColor.match(/^#[0-9a-f]{3,6}$/i)
+        ) {
+          style.innerHTML = style.innerHTML.replace(
+            "--bg: #00b9ff;",
+            `--bg: ${settings.backgroundColor};`
+          );
+        } else if (
+          settings.backgroundColor !== null &&
+          settings.backgroundColor !== undefined
+        ) {
+          error = true;
+          window.console.error(
+            "Receptionist 'backgroundColor' should have a valid hex color format '#000000'"
+          );
+        }
+
+        // settings textColor validation
+        if (!error) {
+          if (
+            settings.textColor &&
+            typeof settings.textColor === "string" &&
+            settings.textColor.match(/^#[0-9a-f]{3,6}$/i)
+          ) {
+            style.innerHTML = style.innerHTML.replace(
+              "--txt: #ffffff;",
+              `--txt: ${settings.textColor};`
+            );
+          } else if (
+            settings.textColor !== null &&
+            settings.textColor !== undefined
+          ) {
+            error = true;
+            window.console.error(
+              "Receptionist 'textColor' should have a valid hex color format '#ffffff'"
+            );
+          }
+        }
+      } else if (settings !== null) {
+        error = true;
+        window.console.error(
+          "Receptionist 'settings' attribute should be an object"
+        );
+      }
+    }
+
+    // --- data prop  ---
     let dataArray = this.getAttribute("data");
+
+    // if data prop is string convert it to a js array
     if (typeof dataArray === "string") {
       try {
-        dataArray = eval(dataArray);
+        dataArray = eval(dataArray.replace(/\s+/g, " "));
       } catch (e) {
         error = true;
         window.console.error(
