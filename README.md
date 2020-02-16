@@ -86,7 +86,56 @@ npm install receptionist
 
 
 
-<a target="_blank" href="#"><img src="https://i.imgur.com/ADiyWDH.jpg" height="900" /></a>
+<a target="_blank" href="#"><img src="https://i.imgur.com/ADiyWDH.jpg" height="920" /></a>
 
+
+<div align="center">
+<br>
+
+  <a target="_blank" href="#"><img src="https://i.imgur.com/45tkdw0.png" height="15" /></a>
+
+<br>
+
+
+  
+```html
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Receptionist - Demo</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    
+    <!-- Import Receptionist -->
+    <script type="module" src="./node_modules/receptionist/receptionist.js"></script>
+    
+  </head>
+  <body>
+    
+    <!-- Add Receptionist -->
+    <saas-receptionist
+      settings="{ backgroundColor : '#000000', textColor : '#ffffff'}"                
+      data="[{
+        checked: true,
+        name: 'Add profile image',
+        description: 'You can change your account avatar in settings page'
+      },
+      {
+        checked: true,
+        name: 'Share Your First Post',
+        description: 'Create a your first post and share it with your friends'
+      },
+      {
+        checked: false,
+        name: 'Send A Friend Request',
+        description: 'search for your friends on the platform and add them'
+      }]"
+    ></saas-receptionist>
+    
+  </body>
+</html>
+```
+
+</div>
 
 
