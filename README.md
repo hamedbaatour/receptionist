@@ -85,9 +85,8 @@ npm install receptionist
 
 
 
-<div align="center">
 
-<a target="_blank" href="#"><img src="https://i.imgur.com/9E39mYy.jpg" height="800" /></a>
+<a target="_blank" href="#"><img src="https://i.imgur.com/gQWwb6G.jpg" height="800" /></a>
 
 
-</div>
+
