@@ -7,9 +7,12 @@
     <!-- Import Receptionist -->
     <script type="module" src="../receptionist.js"></script>
   </head>
-  <body>
+  <body
+    style="background: #363759; display: flex; justify-content: center; align-items: center; height: 70vh"
+  >
     <!-- Add Receptionist -->
     <saas-receptionist
+      open="false"
       data="[{
         checked: true,
         name: 'Add profile image',
@@ -17,26 +20,60 @@
       },
       {
         checked: true,
-        name: 'Add profile image',
-        description: 'You can change your account avatar in settings page'
+        name: 'Share Your First Post',
+        description: 'Create your first post and share it with your friends'
       },
       {
         checked: false,
-        name: 'Add profile image',
-        description: 'You can change your account avatar in settings page'
+        name: 'Send A Friend Request',
+        description: 'Search for your friends on the platform and add them'
       },
       {
         checked: true,
-        name: 'Add profile image',
-        description: 'You can change your account avatar in settings page'
+        name: 'Send Your First Message',
+        description: 'It is time to connect with others, send a cool message!'
       },
       {
         checked: true,
-        name: 'Add profile image',
-        description: 'You can change your account avatar in settings page'
+        name: 'Refer 10 Users',
+        description: 'Refer your family and friends and get free $100 credit'
       }
       ]"
-      settings="{ backgroundColor : '#000000', textColor : '#ffffff'}"
+      settings="{ backgroundColor : '#f50274', textColor : '#ffffff'}"
     ></saas-receptionist>
+
+    <h1
+      style="color: #ffffff; font-family: sans-serif; font-size: 3rem; text-align: center"
+    >
+      🤵 Receptionist Demo
+    </h1>
+
+    <!-- Modify Receptionist With JS -->
+    <script>
+      const receptionist = document.querySelector("saas-receptionist");
+
+      receptionist.addEventListener("widgetclick", e => {
+        console.log(
+          "%c user clicked on widget trigger button 🖱️",
+          "color: #00ffb7"
+        );
+      });
+
+      receptionist.addEventListener("widgetopen", e => {
+        console.log(
+          `widget was opened or closed, open state is:`,
+          e.detail,
+          `${e.detail ? "🙆‍♂" : "🙅‍♂️"}️`
+        );
+      });
+
+      setTimeout(function() {
+        receptionist.setAttribute(
+          "settings",
+          "{ backgroundColor : '#4503fc', textColor : '#ffffff'}"
+        );
+        receptionist.setAttribute("open", "true");
+      }, 1000);
+    </script>
   </body>
 </html>

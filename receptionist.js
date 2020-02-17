@@ -145,24 +145,24 @@ export class Receptionist extends HTMLElement {
     opacity: 0.5;
   }
 
-  .header-progress {
+  .header-progress-bar {
     max-height: 0.5rem;
     width: 70%;
     -webkit-appearance: none;
     appearance: none;
   }
 
-  .header-progress::-webkit-progress-bar {
+  .header-progress-bar::-webkit-progress-bar {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 1rem;
   }
 
-  .header-progress::-webkit-progress-value {
+  .header-progress-bar::-webkit-progress-value {
     background: rgba(255, 255, 255, 0.9);
     border-radius: 1rem;
   }
 
-  .header-progress::-moz-progress-bar {
+  .header-progress-bar::-moz-progress-bar {
     background-color: rgba(255, 255, 255, 0.5);
     border-radius: 1rem;
   }
@@ -242,12 +242,12 @@ export class Receptionist extends HTMLElement {
 
 <!-- Card -->
 <div class="card-wrapper">
-  <section class="card card-active">
+  <section class="card">
     <div class="card-header">
       <h1 class="header-title">🤵 Finish Account Setup</h1>
-      <p class="header-percentage">60% Done</p>
+      <p class="header-percentage"><span class="header-percentage-number">60%</span> Done</p>
 
-      <progress class="header-progress" max="100" value="70"> 70%</progress>
+      <progress class="header-progress-bar" max="100" value="70"> 70%</progress>
     </div>
 
     <div class="card-body">
@@ -270,98 +270,43 @@ export class Receptionist extends HTMLElement {
   /*⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘
                                      Component (JS)
 ⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘⌘*/
+  // error tracking variable
+  error = false;
 
   // Fires when an instance of the element is created or updated
   constructor() {
     super();
   }
 
-  // Fires when Receptionist gets inserted into the document
-  async connectedCallback() {
-    // Set component template (HTML)
-    this.attachShadow({ mode: "open" }).innerHTML = this.template;
-
-    // Getting ShadowDOM elements
-    const fab = this.shadowRoot.querySelector(".fab");
-    const card = this.shadowRoot.querySelector(".card");
-    const list = this.shadowRoot.querySelector(".list");
-    const noDataNotice = this.shadowRoot.querySelector(".empty-list-notice");
-
-    //  === Receptionist settings+data props passed in (html attributes) ===
-    let error = false;
-
-    // --- settings prop ---
-    let settings = this.getAttribute("settings");
-
-    // if settings prop is string convert it to a js object
-    if (typeof settings === "string") {
-      try {
-        settings = settings
-          .replace(/\s+/g, "")
-          .replace(/'/g, '"')
-          .replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:([^\/])/g, '"$2":$4');
-        settings = JSON.parse(settings);
-      } catch (e) {
-        error = true;
-        window.console.error(
-          "Receptionist 'settings' attribute is invalid. please provide a valid object."
-        );
+  // open or close Receptionist card
+  toggleShowWidget(open) {
+    if (open !== undefined && typeof open === "boolean") {
+      if (open && !this.card.classList.contains("card-active")) {
+        // open widget
+        this.card.classList.add("card-active");
+        this.openedText.classList.add("fade");
+        this.closedText.classList.remove("fade");
+      } else if (this.card.classList.contains("card-active")) {
+        // close widget
+        this.card.classList.remove("card-active");
+        this.closedText.classList.add("fade");
+        this.openedText.classList.remove("fade");
       }
-    }
-    if (!error) {
-      // settings object validation
-      if (typeof settings === "object" && settings !== null) {
-        const style = this.shadowRoot.querySelector("style");
-        // settings backgroundColor validation
-        if (
-          settings.backgroundColor &&
-          typeof settings.backgroundColor === "string" &&
-          settings.backgroundColor.match(/^#[0-9a-f]{3,6}$/i)
-        ) {
-          style.innerHTML = style.innerHTML.replace(
-            "--bg: #00b9ff;",
-            `--bg: ${settings.backgroundColor};`
-          );
-        } else if (
-          settings.backgroundColor !== null &&
-          settings.backgroundColor !== undefined
-        ) {
-          error = true;
-          window.console.error(
-            "Receptionist 'backgroundColor' should have a valid hex color format '#000000'"
-          );
-        }
-
-        // settings textColor validation
-        if (!error) {
-          if (
-            settings.textColor &&
-            typeof settings.textColor === "string" &&
-            settings.textColor.match(/^#[0-9a-f]{3,6}$/i)
-          ) {
-            style.innerHTML = style.innerHTML.replace(
-              "--txt: #ffffff;",
-              `--txt: ${settings.textColor};`
-            );
-          } else if (
-            settings.textColor !== null &&
-            settings.textColor !== undefined
-          ) {
-            error = true;
-            window.console.error(
-              "Receptionist 'textColor' should have a valid hex color format '#ffffff'"
-            );
-          }
-        }
-      } else if (settings !== null) {
-        error = true;
-        window.console.error(
-          "Receptionist 'settings' attribute should be an object"
-        );
-      }
+    } else {
+      this.card.classList.toggle("card-active");
+      // Switch animation between FAB closed text (Start Here !) and open text ( X close )
+      [...this.fab.children].forEach(span => span.classList.toggle("fade"));
     }
 
-    // --- data prop  ---
+    // dispatch a custom event for <saas-receptionist> to indicate card open / closed state
+    let event = new CustomEvent("widgetopen", {
+      detail: this.card.classList.contains("card-active")
+    });
+    this.shadowRoot.host.dispatchEvent(event);
+  }
+
+  // --- data prop  ---
+  dataProp() {
     let dataArray = this.getAttribute("data");
 
     // if data prop is string convert it to a js array
@@ -369,27 +314,27 @@ export class Receptionist extends HTMLElement {
       try {
         dataArray = eval(dataArray.replace(/\s+/g, " "));
       } catch (e) {
-        error = true;
+        this.error = true;
         window.console.error(
           "Receptionist 'data' attribute is invalid. please provide a valid array."
         );
       }
     }
-    if (!error) {
+    if (!this.error) {
       if (window.Array.isArray(dataArray)) {
         if (dataArray.length === 0) {
-          noDataNotice.classList.add("show");
+          this.noDataNotice.classList.add("show");
         } else {
           // check if all 'data' array objects have a valid name && description properties
           dataArray.forEach(listItem => {
-            if (!error) {
+            if (!this.error) {
               if (typeof listItem === "object" && listItem !== null) {
                 if (
                   !listItem.name ||
                   typeof listItem.name !== "string" ||
                   (listItem.name && listItem.name.length === 0)
                 ) {
-                  error = true;
+                  this.error = true;
                   window.console.error(
                     "all Receptionist 'data' array objects should have a valid 'name' property"
                   );
@@ -398,7 +343,7 @@ export class Receptionist extends HTMLElement {
                   typeof listItem.description !== "string" ||
                   (listItem.description && listItem.description.length === 0)
                 ) {
-                  error = true;
+                  this.error = true;
                   window.console.error(
                     "all Receptionist 'data' array objects should have a valid 'description' property"
                   );
@@ -406,20 +351,23 @@ export class Receptionist extends HTMLElement {
                   listItem.checked !== undefined &&
                   typeof listItem.checked !== "boolean"
                 ) {
-                  error = true;
+                  this.error = true;
                   window.console.error(
                     "all Receptionist 'data' array objects should have a 'checked' property of type boolean"
                   );
                 }
               } else {
-                error = true;
+                this.error = true;
                 window.console.error(
                   "Receptionist 'data' array should contain objects with a valid 'name' & 'description' property"
                 );
               }
             }
           });
-          if (!error) {
+          if (!this.error) {
+            // before adding any new list items make sure to remove any old ones
+            [...this.list.children].forEach(listItem => listItem.remove());
+
             // data prop is valid so loop through the array and add all list items to the list
             dataArray.forEach(listItem => {
               const li = window.document.createElement("li");
@@ -434,8 +382,23 @@ export class Receptionist extends HTMLElement {
                 <span class="list-item-description">${
                   listItem.description
                 }</span>`;
-              list.appendChild(li);
+              this.list.appendChild(li);
             });
+
+            // calculate percentage of the checked items and show it at the header of the card
+            const checkedItemsNumber = dataArray.filter(
+              listItem => listItem.checked
+            ).length;
+            let donePercentage = (checkedItemsNumber * 100) / dataArray.length;
+            // format percentage
+            donePercentage = Number.isInteger(donePercentage)
+              ? donePercentage
+              : donePercentage.toFixed(2);
+
+            // update percentage text
+            this.percentageText.innerHTML = `${donePercentage}%`;
+            // update progress bar (update progress value attribute)
+            this.progressBar.setAttribute("value", donePercentage);
           }
         }
       } else if (dataArray !== null) {
@@ -443,15 +406,158 @@ export class Receptionist extends HTMLElement {
           "Receptionist 'data' attribute should be an array"
         );
       } else {
-        noDataNotice.classList.add("show");
+        this.noDataNotice.classList.add("show");
+      }
+    }
+  }
+
+  // --- settings prop ---
+  settingsProp() {
+    let settings = this.getAttribute("settings");
+
+    // if settings prop is string convert it to a js object
+    if (typeof settings === "string") {
+      try {
+        settings = settings
+          .replace(/\s+/g, "")
+          .replace(/'/g, '"')
+          .replace(/(['"])?([a-zA-Z0-9_]+)(['"])?:([^\/])/g, '"$2":$4');
+        settings = JSON.parse(settings);
+      } catch (e) {
+        this.error = true;
+        window.console.error(
+          "Receptionist 'settings' attribute is invalid. please provide a valid object."
+        );
+      }
+    }
+    if (!this.error) {
+      // settings object validation
+      if (typeof settings === "object" && settings !== null) {
+        const style = this.shadowRoot.querySelector("style");
+        // settings backgroundColor validation
+        if (
+          settings.backgroundColor &&
+          typeof settings.backgroundColor === "string" &&
+          settings.backgroundColor.match(/^#[0-9a-f]{3,6}$/i)
+        ) {
+          style.innerHTML = style.innerHTML.replace(
+            /--bg: #[0-9a-f]{3,6};/i,
+            `--bg: ${settings.backgroundColor};`
+          );
+        } else if (
+          settings.backgroundColor !== null &&
+          settings.backgroundColor !== undefined
+        ) {
+          this.error = true;
+          window.console.error(
+            "Receptionist 'backgroundColor' should use a valid hex color format '#000000'"
+          );
+        }
+
+        // settings textColor validation
+        if (!this.error) {
+          if (
+            settings.textColor &&
+            typeof settings.textColor === "string" &&
+            settings.textColor.match(/^#[0-9a-f]{3,6}$/i)
+          ) {
+            style.innerHTML = style.innerHTML.replace(
+              /--txt: #[0-9a-f]{3,6};/i,
+              `--txt: ${settings.textColor};`
+            );
+          } else if (
+            settings.textColor !== null &&
+            settings.textColor !== undefined
+          ) {
+            this.error = true;
+            window.console.error(
+              "Receptionist 'textColor' should have a valid hex color format '#ffffff'"
+            );
+          }
+        }
+      } else if (settings !== null) {
+        this.error = true;
+        window.console.error(
+          "Receptionist 'settings' attribute should be an object"
+        );
+      }
+    }
+  }
+
+  // --- open prop ---
+  openProp() {
+    let open = this.getAttribute("open");
+    if (typeof open === "string") {
+      open = open.replace(/\s+|'+|"+|\n+/g, "").toLowerCase();
+      try {
+        open = open === "true";
+      } catch (e) {
+        this.error = true;
+        window.console.error(
+          "Receptionist 'open' attribute is invalid. please provide a boolean value."
+        );
       }
     }
 
+    if (!this.error && open !== null && open !== undefined) {
+      if (typeof open === "boolean") {
+        this.toggleShowWidget(open);
+      } else {
+        this.error = true;
+        window.console.error(
+          "Receptionist 'open' attribute is invalid. please provide a boolean value."
+        );
+      }
+    }
+  }
+  // Fires when Receptionist gets inserted into the document
+  async connectedCallback() {
+    const _this = this;
+    // Set component template (HTML)
+    this.attachShadow({ mode: "open" }).innerHTML = this.template;
+
+    // Setting ShadowDOM elements
+    this.fab = this.shadowRoot.querySelector(".fab");
+    this.card = this.shadowRoot.querySelector(".card");
+    this.list = this.shadowRoot.querySelector(".list");
+    this.noDataNotice = this.shadowRoot.querySelector(".empty-list-notice");
+    this.percentageText = this.shadowRoot.querySelector(
+      ".header-percentage-number"
+    );
+    this.progressBar = this.shadowRoot.querySelector(".header-progress-bar");
+    this.closedText = this.shadowRoot.querySelector(".fab-closed-text");
+    this.openedText = this.shadowRoot.querySelector(".fab-opened-text");
+
+    //  === all Receptionist props (settings,data...) ===
+    // props initial setup
+    this.dataProp();
+    this.settingsProp();
+    this.openProp();
+    // props listener setup for any attribute changes
+    const observer = new MutationObserver(mutations => {
+      mutations.forEach(function(mutation) {
+        if (mutation.type === "attributes") {
+          if (mutation.attributeName === "settings") {
+            _this.settingsProp();
+          } else if (mutation.attributeName === "data") {
+            _this.dataProp();
+          } else if (mutation.attributeName === "open") {
+            _this.openProp();
+          }
+        }
+      });
+    });
+    observer.observe(this.shadowRoot.host, {
+      attributes: true //configure it to listen to attribute changes
+    });
+
     // FAB button click event handler
-    fab.addEventListener("click", () => {
-      card.classList.toggle("card-active");
-      // Switch animation between FAB closed text (Start Here !) and opened text ( X close )
-      [...fab.children].forEach(span => span.classList.toggle("fade"));
+    this.fab.addEventListener("click", e => {
+      // toggle open / close receptionist widget on click
+      this.toggleShowWidget();
+      // dispatch a custom event for <saas-receptionist> to indicate fab button clicked
+      let event = new CustomEvent("widgetclick", e);
+      this.shadowRoot.host.dispatchEvent(event);
     });
   }
 
