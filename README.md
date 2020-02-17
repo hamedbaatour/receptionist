@@ -139,15 +139,32 @@ npm install receptionist
 
 
 
-<a target="_blank" href="#"><img src="https://i.imgur.com/mpsjTnH.png" height="47" /></a>
+<a target="_blank" href="#"><img src="https://i.imgur.com/UtheyZG.png" height="47" /></a>
+
+### Attributes
+
+|  Attribute |  Description                        |  Type    |  Example      |  Default      | 
+| ---------- | ------------------------------------| -------- | ------------- | ------------- |
+| open       | control if the widget is open or not| boolean  | true          | false         |
+| data       | list items data                     | array    |[{ checked: true, name: 'Item Title', description: 'Item Title'}]  | [] |
+| settings   | widget settings                     | object   |{ backgroundColor : '#f50274', textColor : '#000000' }  | { backgroundColor : '#00b9ff', textColor : '#ffffff' } |
+
+<br>
+
+### Events
+
+| Event Name	| Description	                                                              |
+| ----------- | ------------------------------------------------------------------------- |
+| "widgetopen"  | Fires when "open" attribute changes                                       |
+| "widgetclick" | Fires when the user clicks on the FAB button to open or clsoe the widget  |
 
 <br>   
 <br>
 <br>
 
-<a target="_blank" href="#"><img src="https://i.imgur.com/jeefDdE.png" height="47" /></a>
+<a target="_blank" href="#"><img src="https://i.imgur.com/kEzSlZH.png" height="47" /></a>
 
-<br>   
+<br>  
 <br>
 
 
