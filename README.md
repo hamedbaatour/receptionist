@@ -142,3 +142,40 @@ npm install receptionist
 <br>   
 <br>
 
+
+<div align="center">
+<a target="_blank" href="#"><img src="https://i.imgur.com/1Z0o8dV.png" height="47" /></a>
+<br> 
+<br>   
+<br>
+
+
+<a target="_blank" href="#"><img src="https://i.imgur.com/Neb3ong.png" height="70" /></a>
+<br>   
+
+
+<a target="_blank" href="https://www.youtube.com/watch?v=Wd2Ja2q7AAA&t=19s"><img src="https://i.imgur.com/FjJEJnv.jpg" height="370" /></a>
+<br>   
+<br>
+<br>
+
+<a target="_blank" href="#"><img src="https://i.imgur.com/182vK74.png" height="70" /></a>
+<br>   
+
+
+<a target="_blank" href="https://www.youtube.com/watch?v=2B4rTQYJHL8"><img src="https://i.imgur.com/7P5hFGH.jpg" height="370" /></a>
+<br>   
+<br>
+<br>
+
+
+<a target="_blank" href="#"><img src="https://i.imgur.com/mJocIrc.png" height="70" /></a>
+<br>   
+
+
+<a target="_blank" href="https://www.youtube.com/watch?v=gp-1LzhSH30"><img src="https://i.imgur.com/WEmscEs.jpg" height="370" /></a>
+<br>   
+<br>
+<br>
+
+</div>
