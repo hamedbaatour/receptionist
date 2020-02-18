@@ -43,7 +43,7 @@
 <br>
 
 <div align="center">
-<a style="float:left;" align="left" href="https://github.com/hamedbaatour"><img height="220" src="https://i.imgur.com/zBzBb29.png" /></a>
+<a style="float:left;" align="left" href="https://github.com/hamedbaatour"><img height="200" src="https://i.imgur.com/zBzBb29.png" /></a>
 &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; &nbsp; &nbsp; &nbsp;  &nbsp; &nbsp; 
 <a style="float:right;" align="right" href="https://raya.io"><img height="250" src="https://i.imgur.com/LOgawmF.png" /></a>
 </div>
@@ -51,7 +51,7 @@
 <br>
 <br>
 
-<a target="_blank" href="#"><img src="https://i.imgur.com/cYCxvZn.png" height="38" /></a>
+<a target="_blank" href="https://gum.co/XtiLD"><img src="https://i.imgur.com/vW25bLW.png" height="38" /></a>
 
 </div>
 
