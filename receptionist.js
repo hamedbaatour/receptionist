@@ -533,6 +533,7 @@ export class Receptionist extends HTMLElement {
     this.dataProp();
     this.settingsProp();
     this.openProp();
+    // TODO: move this to `attributeChangedCallback`
     // props listener setup for any attribute changes
     const observer = new MutationObserver(mutations => {
       mutations.forEach(function(mutation) {
